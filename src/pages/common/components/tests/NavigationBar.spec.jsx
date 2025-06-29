@@ -3,6 +3,7 @@ import { rest } from 'msw';
 import React from 'react';
 
 import NavigationBar from '@/pages/common/components/NavigationBar';
+import { setCartToLocalStorage } from '@/store/cart';
 import {
   mockUseUserStore,
   mockUseCartStore,
@@ -78,6 +79,7 @@ describe('로그인이 된 경우', () => {
         count: 4,
       },
     };
+    setCartToLocalStorage(cart, userId);
     mockUseCartStore({ cart });
   });
 
