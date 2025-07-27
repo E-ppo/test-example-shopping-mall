@@ -13,17 +13,16 @@ import useConfirmModal from '@/pages/common/hooks/useConfirmModal';
 import useProfile from '@/pages/common/hooks/useProfile';
 import { useCartStore } from '@/store/cart';
 import { useUserStore } from '@/store/user';
-import { pick } from '@/utils/common';
 
 const NavigationBar = () => {
   const navigate = useNavigate();
   const { isModalOpened, toggleIsModalOpened } = useConfirmModal();
-  const { isLogin, setIsLogin, setUserData } = useUserStore(state =>
-    pick(state, 'isLogin', 'setIsLogin', 'setUserData'),
-  );
-  const { cart, initCart } = useCartStore(state =>
-    pick(state, 'cart', 'initCart'),
-  );
+  const isLogin = useUserStore(state => state.isLogin);
+  const setIsLogin = useUserStore(state => state.setIsLogin);
+  const setUserData = useUserStore(state => state.setUserData);
+  const cart = useCartStore(state => state.cart);
+  const initCart = useCartStore(state => state.initCart);
+
   const handleClickModalAgree = () => {
     remove();
     setIsLogin(false);

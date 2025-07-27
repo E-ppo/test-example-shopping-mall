@@ -11,19 +11,19 @@ import useProducts from '@/pages/home/hooks/useProducts';
 import { useCartStore } from '@/store/cart';
 import { useFilterStore } from '@/store/filter';
 import { useUserStore } from '@/store/user';
-import { pick } from '@/utils/common';
 
 const PRODUCT_PAGE_LIMIT = 20;
 
 const ProductList = ({ limit = PRODUCT_PAGE_LIMIT }) => {
   const navigate = useNavigate();
-  const filter = useFilterStore(state =>
-    pick(state, 'categoryId', 'title', 'minPrice', 'maxPrice'),
-  );
-  const { user, isLogin } = useUserStore(state =>
-    pick(state, 'user', 'isLogin'),
-  );
-  const { addCartItem } = useCartStore(state => pick(state, 'addCartItem'));
+  const categoryId = useFilterStore(state => state.categoryId);
+  const title = useFilterStore(state => state.title);
+  const minPrice = useFilterStore(state => state.minPrice);
+  const maxPrice = useFilterStore(state => state.maxPrice);
+  const filter = { categoryId, title, minPrice, maxPrice };
+  const user = useUserStore(state => state.user);
+  const isLogin = useUserStore(state => state.isLogin);
+  const addCartItem = useCartStore(state => state.addCartItem);
 
   const { data, ...productsMethods } = useProducts({
     limit,
@@ -64,7 +64,7 @@ const ProductList = ({ limit = PRODUCT_PAGE_LIMIT }) => {
         />
       ))}
       {hasNextPage && (
-        <Grid item>
+        <Grid>
           <Button
             variant="contained"
             endIcon={<KeyboardArrowDownIcon />}

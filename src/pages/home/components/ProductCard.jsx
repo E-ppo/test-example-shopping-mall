@@ -40,10 +40,7 @@ const ProductCard = ({
 
   return (
     <Grid
-      item
-      xs={6}
-      sm={6}
-      md={3}
+      size={{ xs: 6, sm: 6, md: 3 }}
       onClick={handleClickItem}
       data-testid="product-card"
     >

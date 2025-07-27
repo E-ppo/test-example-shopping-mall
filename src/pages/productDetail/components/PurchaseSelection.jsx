@@ -13,15 +13,13 @@ import { cartValidationMessages } from '@/messages';
 import CartButtonGroup from '@/pages/productDetail/components/CartButtonGroup';
 import { useCartStore } from '@/store/cart';
 import { useUserStore } from '@/store/user';
-import { pick } from '@/utils/common';
 
 const PurchaseSelection = ({ product }) => {
   const navigate = useNavigate();
   const countRef = useRef(0);
-  const { addCartItem } = useCartStore(state => pick(state, 'addCartItem'));
-  const { user, isLogin } = useUserStore(state =>
-    pick(state, 'user', 'isLogin'),
-  );
+  const addCartItem = useCartStore(state => state.addCartItem);
+  const user = useUserStore(state => state.user);
+  const isLogin = useUserStore(state => state.isLogin);
 
   const purchaseProduct = () => {
     if (!isLogin) {

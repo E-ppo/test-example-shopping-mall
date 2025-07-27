@@ -11,11 +11,10 @@ import {
 import React from 'react';
 
 import { useCartStore } from '@/store/cart';
-import { pick } from '@/utils/common';
 import { formatPrice } from '@/utils/formatter';
 
 const ItemList = () => {
-  const { cart } = useCartStore(state => pick(state, 'cart'));
+  const cart = useCartStore(state => state.cart);
 
   return (
     <Box mt={2}>

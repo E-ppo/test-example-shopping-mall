@@ -15,13 +15,12 @@ import { pageRoutes } from '@/apiRoutes';
 import { EMAIL_PATTERN, TOAST_ID } from '@/constants';
 import { useLogin } from '@/pages/login/hooks/useLogin';
 import { useUserStore } from '@/store/user';
-import { pick } from '@/utils/common';
 
 const Forms = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { mutate } = useLogin();
-  const { setIsLogin } = useUserStore(state => pick(state, 'setIsLogin'));
+  const setIsLogin = useUserStore(state => state.setIsLogin);
 
   const handleClickRegister = () => {
     navigate(pageRoutes.register);

@@ -4,7 +4,6 @@ import React, { useEffect } from 'react';
 import { apiRoutes } from '@/apiRoutes';
 import NavigationBar from '@/pages/common/components/NavigationBar';
 import { useUserStore } from '@/store/user';
-import { pick } from '@/utils/common';
 
 const API_DOMAIN = 'http://localhost:3000';
 
@@ -16,9 +15,8 @@ export default {
 export const Default = { name: '로그아웃 상태' };
 
 const LoggedInNavigationBar = () => {
-  const { setIsLogin } = useUserStore(state =>
-    pick(state, 'isLogin', 'setIsLogin'),
-  );
+  const setIsLogin = useUserStore(state => state.setIsLogin);
+
   useEffect(() => {
     setIsLogin(true);
 

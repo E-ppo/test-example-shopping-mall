@@ -14,7 +14,6 @@ import { couponType } from '@/constants';
 import PaymentMethodTableRow from '@/pages/purchase/components/PaymentMethodTableRow';
 import useCouponList from '@/pages/purchase/hooks/useCouponList';
 import { useCartStore } from '@/store/cart';
-import { pick } from '@/utils/common';
 import { formatPrice } from '@/utils/formatter';
 
 const getTotalPrice = ({ coupon, shippingCost, totalPrice }) => {
@@ -29,7 +28,7 @@ const getTotalPrice = ({ coupon, shippingCost, totalPrice }) => {
 };
 
 const Payment = () => {
-  const { totalPrice } = useCartStore(state => pick(state, 'totalPrice'));
+  const totalPrice = useCartStore(state => state.totalPrice);
   const { selectedCoupon } = useCouponList();
   const shippingCost = 5;
   const couponName = selectedCoupon?.name ?? '선택 안함';

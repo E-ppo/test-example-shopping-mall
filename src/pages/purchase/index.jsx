@@ -14,13 +14,12 @@ import ShippingInformationForm from '@/pages/purchase/components/ShippingInforma
 import { usePurchase } from '@/pages/purchase/hooks/usePurchase';
 import { useCartStore } from '@/store/cart';
 import { useUserStore } from '@/store/user';
-import { pick } from '@/utils/common';
 
 const Purchase = () => {
   const { mutate, isLoading } = usePurchase();
   const navigate = useNavigate();
-  const { resetCart } = useCartStore(state => pick(state, 'resetCart'));
-  const { user } = useUserStore(state => pick(state, 'user'));
+  const resetCart = useCartStore(state => state.resetCart);
+  const user = useUserStore(state => state.user);
   const { sendErrorLog, sendInfoLog } = useLog();
   const methods = useForm({
     defaultValues: {

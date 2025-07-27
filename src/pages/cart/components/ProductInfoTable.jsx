@@ -4,13 +4,12 @@ import React from 'react';
 import ProductInfoTableRow from '@/pages/cart/components/ProductInfoTableRow';
 import { useCartStore } from '@/store/cart';
 import { useUserStore } from '@/store/user';
-import { pick } from '@/utils/common';
 
 const ProductInfoTable = () => {
-  const { cart, removeCartItem, changeCartItemCount } = useCartStore(state =>
-    pick(state, 'cart', 'removeCartItem', 'changeCartItemCount'),
-  );
-  const { user } = useUserStore(state => pick(state, 'user'));
+  const cart = useCartStore(state => state.cart);
+  const removeCartItem = useCartStore(state => state.removeCartItem);
+  const changeCartItemCount = useCartStore(state => state.changeCartItemCount);
+  const user = useUserStore(state => state.user);
 
   return (
     <TableContainer component={Paper} sx={{ wordBreak: 'break-word' }}>

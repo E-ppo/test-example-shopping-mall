@@ -10,7 +10,7 @@ import {
 import React from 'react';
 
 const SkeletonProductCard = () => (
-  <Grid item xs={6} sm={6} md={3}>
+  <Grid size={{ xs: 6, sm: 6, md: 3 }}>
     <Card sx={{ maxWidth: 345 }}>
       <Skeleton variant="rectangular" height="100" />
       <CardContent>

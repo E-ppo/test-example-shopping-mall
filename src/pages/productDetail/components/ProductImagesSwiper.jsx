@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigation } from 'swiper';
+import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 const ProductImagesSwiper = ({ images }) => {
