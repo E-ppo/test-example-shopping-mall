@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
@@ -31,9 +31,9 @@ const TestForm = props => {
 it('쿠폰 데이터를 가져오면 정상적으로 쿠폰 항목을 노출한다.', async () => {
   const { user } = await render(<TestForm />);
 
-  const [selectBoxButton] = await screen.findAllByRole('button');
-
-  await user.click(selectBoxButton);
+  await user.click(
+    within(screen.getByLabelText('쿠폰 리스트')).getByRole('combobox'),
+  );
 
   expect(screen.getByText('가입 기념! $5 할인 쿠폰')).toBeInTheDocument();
   expect(screen.getByText('$3 할인 쿠폰')).toBeInTheDocument();

@@ -19,15 +19,12 @@ describe('배송 정보', () => {
   });
 
   it('할인 쿠폰을 선택하지 않은 경우 "없음"이 노출되며, 특정 할인 쿠폰을 선택하면 해당 쿠폰의 이름("가입 기념! $5 할인 쿠폰")이 노출된다', () => {
-    cy.get('@shippingList')
-      .eq(2)
-      .findByRole('button', { name: '없음' })
-      .click();
+    cy.get('@shippingList').eq(2).findByText('없음').click();
     cy.findByText('가입 기념! $5 할인 쿠폰').click();
 
     cy.get('@shippingList')
       .eq(2)
-      .findByRole('button', { name: '가입 기념! $5 할인 쿠폰' })
+      .findByText('가입 기념! $5 할인 쿠폰')
       .should('exist');
   });
 
@@ -110,10 +107,7 @@ describe('결제 정보', () => {
   });
 
   it('배송 정보에서 특정 할인 쿠폰을 선택하면 결제 정보에 해당 쿠폰 정보가 노출되며, 결제 금액이 재계산된다', () => {
-    cy.get('@shippingList')
-      .eq(2)
-      .findByRole('button', { name: '없음' })
-      .click();
+    cy.get('@shippingList').eq(2).findByText('없음').click();
     cy.findByText('가입 기념! $5 할인 쿠폰').click();
 
     cy.get('@paymentList').eq(0).findByText('$1,251.00').should('exist');

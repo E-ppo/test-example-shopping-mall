@@ -9,11 +9,12 @@ it('pageTitle 스냅샷 테스트(toMatchInlineSnapshot)', async () => {
   expect(container).toMatchInlineSnapshot(`
     <div>
       <h1
-        class="MuiTypography-root MuiTypography-h4 css-1lnl64-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-h4 css-1ci4e74-MuiTypography-root"
       >
         상품 리스트
       </h1>
       <div
+        id="_rht_toaster"
         style="position: fixed; z-index: 9999; top: 16px; left: 16px; right: 16px; bottom: 16px; pointer-events: none;"
       />
     </div>

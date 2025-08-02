@@ -38,6 +38,10 @@ describe('필터', () => {
   it('카테고리를 "Shoes"로 선택할 경우 해당 카테고리 상품만 나타난다', () => {
     cy.findByRole('radio', { name: 'Shoes' }).click();
 
+    // ? 명시적인 로딩 검증 과정 추가
+    cy.findAllByTestId('product-skeleton').should('have.length.greaterThan', 0);
+    cy.findAllByTestId('product-skeleton').should('not.exist');
+
     cy.findAllByTestId('product-card').each($el => {
       cy.wrap($el).findByText('Shoes').should('exist');
     });

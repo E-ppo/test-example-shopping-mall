@@ -26,7 +26,12 @@ const CouponListTableRow = () => {
       <TableCell>
         <FormControl fullWidth size="small">
           <InputLabel>쿠폰 리스트</InputLabel>
-          <Select value={selectedValue} label="쿠폰 리스트" onChange={onChange}>
+          <Select
+            value={selectedValue}
+            label="쿠폰 리스트"
+            aria-label="쿠폰 리스트"
+            onChange={onChange}
+          >
             <MenuItem value={NO_COUPON_ID}>없음</MenuItem>
             {couponList.map(({ name, id }) => (
               <MenuItem value={id} key={id}>
