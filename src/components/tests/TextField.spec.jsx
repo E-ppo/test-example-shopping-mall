@@ -26,3 +26,58 @@ it('className prop으로 설정한 css class가 적용된다.', async () => {
     'my-class',
   );
 });
+
+// 기대 결과를 정의한다.
+// it -> test 함수의 alias
+// it -> 'should~~~' 또는 test -> 'if~~~' 적용
+// describe -> it 또는 test 함수들을 그룹핑하여 테스트를 진행
+it('기본 placeholder "텍스트를 입력 해주세요."가 노출된다.', async () => {
+  // 기대결과 === 실제 결과 --> 성공
+  // 기대결과 !== 실제 결과 --> 실패
+
+  // Arrange
+  await render(<TextField />);
+
+  // Act 생략
+
+  // Assert
+  // 단언(assertion) -> 테스트가 통과하기 위한 조건 -> 검증 실행
+  const textInput = screen.getByPlaceholderText('텍스트를 입력해 주세요.');
+  expect(textInput).toBeInTheDocument();
+});
+
+it('placeholder prop에 따라 placeholder가 변경된다.', async () => {
+  // Arrange
+  await render(<TextField placeholder={'플레이스 홀더가 변경'} />);
+
+  // Act 생략
+
+  // Assert
+  const textInput = screen.getByPlaceholderText('플레이스 홀더가 변경');
+  expect(textInput).toBeInTheDocument();
+});
+
+describe('placeholder', () => {
+  it('기본 placeholder "텍스트를 입력 해주세요."가 노출된다.', async () => {
+    // Arrange
+    await render(<TextField />);
+
+    // Act 생략
+
+    // Assert
+    // 단언(assertion) -> 테스트가 통과하기 위한 조건 -> 검증 실행
+    const textInput = screen.getByPlaceholderText('텍스트를 입력해 주세요.');
+    expect(textInput).toBeInTheDocument();
+  });
+
+  it('placeholder prop에 따라 placeholder가 변경된다.', async () => {
+    // Arrange
+    await render(<TextField placeholder={'플레이스 홀더가 변경'} />);
+
+    // Act 생략
+
+    // Assert
+    const textInput = screen.getByPlaceholderText('플레이스 홀더가 변경');
+    expect(textInput).toBeInTheDocument();
+  });
+});
