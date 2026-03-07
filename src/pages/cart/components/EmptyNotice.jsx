@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { pageRoutes } from '@/apiRoutes';
 
+// 여러 컴포넌트가 조합됨 -> 하지만 홈으로 이동 가능만 있는 단순한 컴포넌트
+// 3개 컴포넌트 모두 독립적으로 테스트 가능 -> 단위 테스트
 const EmptyNotice = () => {
   const navigate = useNavigate();
 
