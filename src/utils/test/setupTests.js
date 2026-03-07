@@ -11,6 +11,8 @@ beforeAll(() => {
 });
 
 afterEach(() => {
+  // 각 테스트 실행 후, spy 함수의 호출 기록(횟수, 인자)을 초기화
+  // mock 구현 자체는 유지되므로 다음 테스트에서도 mock은 정상 동작
   server.resetHandlers();
   vi.clearAllMocks();
 });
